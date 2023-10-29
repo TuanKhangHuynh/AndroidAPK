@@ -1304,4 +1304,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/AndroidTablet.unity
-  playerPath: C:/Users/ru68yot/Android APK/AndroidAPK/RobotController.apk
+  playerPath: C:/Users/ru68yot/Documents/AndoridAPK/AndroidAPK/AndroidAPK/RobotController.apk
