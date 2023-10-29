@@ -35,7 +35,13 @@ public class UIManager : MonoBehaviour
 
     public void SuccessSound()
     {
-        Client.instance.SoundSend("Xylophone");
+        Client.instance.SoundSend("Succes");
+    }
+
+
+    public void FailSound()
+    {
+        Client.instance.SoundSend("Fail");
     }
 
     public void XylophoneStart()
