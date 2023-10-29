@@ -9,6 +9,7 @@ public enum ServerPackets
 {
     welcome = 1,
     scene,
+    sound,
     xylomovement,
     robotmovement,
     handovermovement,
@@ -21,6 +22,8 @@ public enum ClientPackets
     welcomeReceived = 1,
     sceneSend,
     sceneReceived,
+    soundSend,
+    soundReceived,
     xylomovementSend,
     xylomovementReceived,
     legomovementSend,

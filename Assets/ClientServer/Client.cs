@@ -10,9 +10,10 @@ public class Client : MonoBehaviour
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-    public string ip = "10.163.65.71";
+    //public string ip = "10.163.65.71";
+    public string ip = "10.163.181.115";
     public int port = 26950;
-    public int myId = 3;
+    public int myId = 1;
     public TCP tcp;
     public UDP udp;
 
@@ -83,6 +84,11 @@ public class Client : MonoBehaviour
     public void SceneSend(string _scene)
     {
         ClientSend.SceneSend(_scene);
+    }
+
+    public void SoundSend(string _sound)
+    {
+        ClientSend.SoundSend(_sound);
     }
 
     public class TCP
