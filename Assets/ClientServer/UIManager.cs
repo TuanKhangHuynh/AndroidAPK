@@ -47,6 +47,11 @@ public class UIManager : MonoBehaviour
         Client.instance.SceneSend("Xylophone");
     }
 
+    public void ResetRobot()
+    {
+        Client.instance.XyloSend("Reset");
+    }
+
     public void XylophoneC()
     {
         Client.instance.XyloSend("C");
