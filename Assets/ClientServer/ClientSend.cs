@@ -24,7 +24,7 @@ public class ClientSend : MonoBehaviour
 
     public static void SceneSend(string _scene)
     {
-        using (Packet _packet = new Packet((int)ClientPackets.soundSend))
+        using (Packet _packet = new Packet((int)ClientPackets.sceneSend))
         {
             _packet.Write(Client.instance.myId);
             _packet.Write(_scene);
@@ -35,7 +35,7 @@ public class ClientSend : MonoBehaviour
 
     public static void SoundSend(string _scene)
     {
-        using (Packet _packet = new Packet((int)ClientPackets.sceneSend))
+        using (Packet _packet = new Packet((int)ClientPackets.soundSend))
         {
             _packet.Write(Client.instance.myId);
             _packet.Write(_scene);
