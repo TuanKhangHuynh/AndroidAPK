@@ -33,9 +33,13 @@ public class UIManager : MonoBehaviour
         Client.instance.DisconnectFromServer();
     }
 
-    public void SuccessSound()
+    public void SoundSuccess()
     {
-        Client.instance.SoundSend("Xylophone");
+        Client.instance.SoundSend("Success");
+    }
+    public void SoundFail()
+    {
+        Client.instance.SoundSend("Fail");
     }
 
     public void XylophoneStart()
