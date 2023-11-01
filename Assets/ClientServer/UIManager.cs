@@ -142,27 +142,76 @@ public class UIManager : MonoBehaviour
 
     public void Handover1()
     {
-        Client.instance.LegoSend("Handover1");
+        Client.instance.HandoverSend("Object1");
+    }
+
+    public void HandoverRelease1()
+    {
+        Client.instance.HandoverSend("Release1");
     }
 
     public void Handover2()
     {
-        Client.instance.LegoSend("Handover2");
+        Client.instance.HandoverSend("Object2");
+    }
+    public void HandoverRelease2()
+    {
+        Client.instance.HandoverSend("Release2");
     }
 
     public void Handover3()
     {
-        Client.instance.LegoSend("Handover3");
+        Client.instance.HandoverSend("Object3");
+    }
+    public void HandoverRelease3()
+    {
+        Client.instance.HandoverSend("Release3");
     }
 
     public void Handover4()
     {
-        Client.instance.LegoSend("Handover4");
+        Client.instance.HandoverSend("Object4");
+    }
+    public void HandoverRelease4()
+    {
+        Client.instance.HandoverSend("Release4");
     }
 
     public void Connect4Start()
     {
         Client.instance.SceneSend("Connect4");
+    }
+    public void Connect4GetStone()
+    {
+        Client.instance.Connect4Send("GetStone");
+    }
+    public void Connect4Row1()
+    {
+        Client.instance.Connect4Send("1");
+    }
+    public void Connect4Row2()
+    {
+        Client.instance.Connect4Send("2");
+    }
+    public void Connect4Row3()
+    {
+        Client.instance.Connect4Send("3");
+    }
+    public void Connect4Row4()
+    {
+        Client.instance.Connect4Send("4");
+    }
+    public void Connect4Row5()
+    {
+        Client.instance.Connect4Send("5");
+    }
+    public void Connect4Row6()
+    {
+        Client.instance.Connect4Send("6");
+    }
+    public void Connect4Row7()
+    {
+        Client.instance.Connect4Send("7");
     }
 
 

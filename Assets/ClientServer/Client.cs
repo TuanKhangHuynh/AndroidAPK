@@ -72,12 +72,12 @@ public class Client : MonoBehaviour
 
     public void HandoverSend(string movement)
     {
-        ClientSend.LegomovementSend(movement);
+        ClientSend.HandovermovementSend(movement);
     }
 
     public void Connect4Send(string movement)
     {
-        ClientSend.LegomovementSend(movement);
+        ClientSend.Connect4movementSend(movement);
     }
 
 

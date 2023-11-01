@@ -67,6 +67,30 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    public static void HandovermovementSend(string _movement)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.handovermovementSend))
+        {
+            _packet.Write(Client.instance.myId);
+            _packet.Write(_movement);
+
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void Connect4movementSend(string _movement)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.connect4movementSend))
+        {
+            _packet.Write(Client.instance.myId);
+            _packet.Write(_movement);
+
+            SendTCPData(_packet);
+        }
+    }
+
+
+
     public static void XylomovementReceived(string _movement)
     {
         using (Packet _packet = new Packet((int)ClientPackets.xylomovementReceived))
