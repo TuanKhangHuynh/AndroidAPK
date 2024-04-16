@@ -2,8 +2,10 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Client
+    - InitiateConnection
     - ThreadManager
     - UIManager
+    - changeText
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -22,8 +24,10 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -44,6 +48,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
@@ -65,16 +70,28 @@ ScriptsOnlyBuild:
     methodName: XylophoneE
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: Handover3
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundSuccess
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Connect4Row1
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Connect4Row4
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -87,18 +104,33 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Handover4
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundFail
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: XylophoneOpen
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: QuitApp
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego1
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: LegoX
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -107,10 +139,7 @@ ScriptsOnlyBuild:
     methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego2
-  - assembly: Assembly-CSharp
-    fullTypeName: UIManager
-    methodName: SoundSuccess
+    methodName: LegoX
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: HandoverRelease2
@@ -125,22 +154,52 @@ ScriptsOnlyBuild:
     methodName: ResetRobot
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundFail
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundSuccess
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: XylophoneG
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: XylophoneF
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundSuccess
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -150,6 +209,15 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: HandoverRelease4
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundSuccess
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -158,22 +226,58 @@ ScriptsOnlyBuild:
     methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego3
+    methodName: LegoX
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: XylophoneClose
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: XylophoneD
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: DisconnectFromServer
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: XylophoneC
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego4
+    methodName: LegoX
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundSuccess
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Handover1
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundSuccess
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: HandoverRelease1
@@ -182,10 +286,25 @@ ScriptsOnlyBuild:
     methodName: LegoStart
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: Connect4GetStone
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego6
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: LegoX
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: ResetRobot
@@ -195,6 +314,12 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Lego2
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -203,10 +328,13 @@ ScriptsOnlyBuild:
     methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: Lego5
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundSuccess
+    methodName: LegoX
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Lego1
@@ -215,10 +343,19 @@ ScriptsOnlyBuild:
     methodName: Lego6
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundFail
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: XylophoneB
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Lego4
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: HandoverStart
@@ -230,13 +367,49 @@ ScriptsOnlyBuild:
     methodName: Connect4Start
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: Lego5
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Connect4Row5
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundFail
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
     methodName: Handover2
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundFail
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Connect4Row7
@@ -252,9 +425,6 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: ResetRobot
-  - assembly: Assembly-CSharp
-    fullTypeName: UIManager
-    methodName: SoundFail
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -266,10 +436,19 @@ ScriptsOnlyBuild:
     methodName: Connect4Row6
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
-    methodName: SoundFail
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: ResetRobot
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: Sound
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: SoundFail
   - assembly: Assembly-CSharp
     fullTypeName: UIManager
     methodName: Lego3
@@ -298,6 +477,8 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 16034}
+    - Class: 114
       Script: {instanceID: 16076}
     - Class: 114
       Script: {instanceID: 16652}
@@ -316,17 +497,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18772}
     - Class: 114
-      Script: {instanceID: 19464}
+      Script: {instanceID: 19132}
     - Class: 114
-      Script: {instanceID: 19514}
+      Script: {instanceID: 19466}
     - Class: 114
-      Script: {instanceID: 19914}
+      Script: {instanceID: 19516}
     - Class: 114
-      Script: {instanceID: 20006}
+      Script: {instanceID: 19916}
     - Class: 114
-      Script: {instanceID: 20154}
+      Script: {instanceID: 20008}
     - Class: 114
-      Script: {instanceID: 20464}
+      Script: {instanceID: 20156}
+    - Class: 114
+      Script: {instanceID: 20466}
+    - Class: 114
+      Script: {instanceID: 20872}
+    - Class: 114
+      Script: {instanceID: 21682}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -766,6 +953,12 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 717d61e68c58310de1dac769b03d12b4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: changeText
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -844,7 +1037,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 05c26a69c1fde3f08133e03cc006af91
+      Hash: ff2455971cd50545472d04d284e33809
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1090,6 +1283,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: ab5d02d4e1cee9494fe7fdf839530e3e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InitiateConnection
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -1157,4 +1356,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/AndroidTablet.unity
-  playerPath: C:/Users/ru68yot/Documents/AndoridAPK/AndroidAPK/AndroidAPK/RobotController.apk
+  playerPath: C:/Users/ru68yot/Documents/AndoridAPK/AndroidAPK/AndroidAPK/RobotControllerInAR.apk

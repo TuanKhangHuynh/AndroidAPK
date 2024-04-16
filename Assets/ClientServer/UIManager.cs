@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject startMenu;
     public InputField usernameField;
+    public bool waiting = false;
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class UIManager : MonoBehaviour
         Client.instance.DisconnectFromServer();
     }
 
+    public void DisconnectFromTCPServer()
+    {
+        Client.instance.DisconnectFromTCPServer();
+    }
+    #region Sound
     public void SoundSuccess()
     {
         Client.instance.SoundSend("Success");
@@ -41,15 +47,29 @@ public class UIManager : MonoBehaviour
     {
         Client.instance.SoundSend("Fail");
     }
-
-    public void XylophoneStart()
+    public void Sound(string _sound)
     {
-        Client.instance.SceneSend("Xylophone");
+        Client.instance.SoundSend(_sound);
     }
+
+    #endregion
 
     public void ResetRobot()
     {
         Client.instance.XyloSend("Reset");
+    }
+
+    public void ResetLog()
+    {
+        changeText NotesLog = GameObject.FindObjectOfType(typeof(changeText)) as changeText;
+        NotesLog.resetText();
+    }
+
+
+    #region Xylophone
+    public void XylophoneStart()
+    {
+        Client.instance.SceneSend("Xylophone");
     }
 
     public void XylophoneC()
@@ -90,10 +110,22 @@ public class UIManager : MonoBehaviour
 
     public void XylophoneEntchen()
     {
-        Client.instance.XyloSend("Entchen");
+        //StartCoroutine(XyloSound("02"));
+        StartCoroutine(SoundMovement("02", "Entchen", "Xylo"));
+
     }
 
+    public void XylophoneOpen()
+    {
+        Client.instance.XyloSend("OpenGripper");
+    }
 
+    public void XylophoneClose()
+    {
+        Client.instance.XyloSend("CloseGripper");
+    }
+    #endregion
+    #region Lego
     public void LegoStart()
     {
         Client.instance.SceneSend("Lego");
@@ -101,40 +133,54 @@ public class UIManager : MonoBehaviour
 
     public void Lego1()
     {
+        //StartCoroutine(SoundMovement("10", "Lego1", "Lego"));
         Client.instance.LegoSend("Lego1");
     }
 
     public void Lego2()
     {
+        //StartCoroutine(waitforit(2.0f));
+        //StartCoroutine(SoundMovement("35", "Lego2", "Lego"));
         Client.instance.LegoSend("Lego2");
+
     }
 
     public void Lego3()
     {
+        //StartCoroutine(SoundMovement("36", "Lego3", "Lego"));
         Client.instance.LegoSend("Lego3");
     }
 
     public void Lego4()
     {
+        //StartCoroutine(SoundMovement("10", "Lego4", "Lego"));
         Client.instance.LegoSend("Lego4");
     }
 
     public void Lego5()
     {
+        //StartCoroutine(SoundMovement("35", "Lego5", "Lego"));
         Client.instance.LegoSend("Lego5");
     }
 
     public void Lego6()
     {
+        //StartCoroutine(SoundMovement("36", "Lego6", "Lego"));
         Client.instance.LegoSend("Lego6");
     }
 
     public void Lego7()
     {
-        Client.instance.LegoSend("Lego7");
+        StartCoroutine(SoundMovement("10", "Lego7", "Lego"));
     }
 
-
+    public void LegoX(string _lego)
+    {
+        int randomNum = Random.Range(0, 3);
+        StartCoroutine(SoundMovementrng(randomNum, _lego, "Lego"));
+    }
+    #endregion
+    #region Handover
     public void HandoverStart()
     {
         Client.instance.SceneSend("Handover");
@@ -142,41 +188,43 @@ public class UIManager : MonoBehaviour
 
     public void Handover1()
     {
-        Client.instance.HandoverSend("Object1");
+        StartCoroutine(SoundMovement("15", "Object1", "Hand"));
     }
 
     public void HandoverRelease1()
     {
-        Client.instance.HandoverSend("Release1");
+        StartCoroutine(SoundMovement("17", "Release1", "Hand"));
     }
 
     public void Handover2()
     {
-        Client.instance.HandoverSend("Object2");
+        StartCoroutine(SoundMovement("15", "Object2", "Hand"));
     }
     public void HandoverRelease2()
     {
-        Client.instance.HandoverSend("Release2");
+        StartCoroutine(SoundMovement("17", "Release2", "Hand"));
+
     }
 
     public void Handover3()
     {
-        Client.instance.HandoverSend("Object3");
+        StartCoroutine(SoundMovement("15", "Object3", "Hand"));
+
     }
     public void HandoverRelease3()
     {
-        Client.instance.HandoverSend("Release3");
+        StartCoroutine(SoundMovement("17", "Release3", "Hand"));
     }
-
     public void Handover4()
     {
-        Client.instance.HandoverSend("Object4");
+        StartCoroutine(SoundMovement("15", "Object4", "Hand"));
     }
     public void HandoverRelease4()
     {
-        Client.instance.HandoverSend("Release4");
+        StartCoroutine(SoundMovement("17", "Release4", "Hand"));
     }
-
+    #endregion
+    #region Connect4
     public void Connect4Start()
     {
         Client.instance.SceneSend("Connect4");
@@ -213,7 +261,7 @@ public class UIManager : MonoBehaviour
     {
         Client.instance.Connect4Send("7");
     }
-
+    #endregion
 
     public void Exit()
     {
@@ -224,5 +272,84 @@ public class UIManager : MonoBehaviour
     public void QuitApp()
     {
         Application.Quit();    
+    }
+
+
+    IEnumerator XyloSound(string _sound, float _time = 2.0f)
+    {
+        Client.instance.SoundSend(_sound);
+        yield return new WaitForSeconds(_time);
+        Client.instance.XyloSend("Entchen");
+    }
+
+    IEnumerator LegoSound(string _movement, float _time = 2.0f)
+    {
+        Client.instance.SoundSend("10");
+        yield return new WaitForSeconds(_time);
+        Client.instance.LegoSend(_movement);
+    }
+
+    IEnumerator SoundMovement(string _sound, string _movement, string task, float _time = 2.5f)
+    {
+        Client.instance.SoundSend(_sound);
+        yield return new WaitForSeconds(_time);
+
+        switch (task)
+        {
+            case "Xylo":
+                Client.instance.XyloSend(_movement);
+                break;
+            case "Lego":
+                Client.instance.LegoSend(_movement);
+                break;
+            case "Hand":
+                Client.instance.HandoverSend(_movement);
+                break;
+            case "Con4":
+                Client.instance.Connect4Send(_movement);
+                break;
+        }
+
+    }
+
+    IEnumerator SoundMovementrng(int randomnr, string _movement, string task, float _time = 2.5f)
+    {
+
+        if (randomnr == 0)
+        {
+            Client.instance.SoundSend("10");
+        }
+        else if (randomnr == 1)
+        {
+            Client.instance.SoundSend("35");
+        }
+        else if (randomnr == 2)
+        {
+            Client.instance.SoundSend("36");
+        }
+        else if (randomnr == 3)
+        {
+            Client.instance.SoundSend("11");
+        }
+
+
+        yield return new WaitForSeconds(_time);
+
+        switch (task)
+        {
+            case "Xylo":
+                Client.instance.XyloSend(_movement);
+                break;
+            case "Lego":
+                Client.instance.LegoSend(_movement);
+                break;
+            case "Hand":
+                Client.instance.HandoverSend(_movement);
+                break;
+            case "Con4":
+                Client.instance.Connect4Send(_movement);
+                break;
+        }
+
     }
 }

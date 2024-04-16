@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Net;
+using System.Net.Sockets;
+using System;
 
 public class ClientHandle : MonoBehaviour
 {
@@ -16,8 +19,32 @@ public class ClientHandle : MonoBehaviour
         Debug.Log($"Message from server: {_msg}");
         Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
+
+        // Now that we have the client's id, connect UDP
+        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
-    
+
+    public static void UDPTest(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+
+        Debug.Log($"Received packet via UDP. Contains message: {_msg}");
+        ClientSend.UDPTestReceived();
+    }
+
+
+    public static void noteReceived(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        int _myId = _packet.ReadInt();
+
+        changeText NotesLog = GameObject.FindObjectOfType(typeof(changeText)) as changeText;
+        NotesLog.addMoreText(_msg);
+
+        // Do stuff update the text and show it in the black box
+    }
+
+
     /*
     public static void xyloMovement(Packet _packet)
     {

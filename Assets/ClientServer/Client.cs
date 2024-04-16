@@ -44,13 +44,17 @@ public class Client : MonoBehaviour
     {
         Disconnect();
     }
+
     public void ConnectToServer()
     {
         // TODO depending on the client ID there should be different Initialized packets
         // ID=1 Android App does not receive robot movements only Id=2 receives them ID=3 receives the robot joints
+
+
         InitializeClientData();
         isConnected = true;
         tcp.Connect();
+        //udp.Connect();
     }
 
     public void DisconnectFromServer()
@@ -58,8 +62,13 @@ public class Client : MonoBehaviour
         Disconnect();
     }
 
-    // Change all to MovementSend
+    public void DisconnectFromTCPServer()
+    {
+        DisconnectTCP();
+    }
 
+    #region Sending movement from client to server
+    // Change all to MovementSend
     public void XyloSend(string movement)
     {
         ClientSend.XylomovementSend(movement);
@@ -79,7 +88,7 @@ public class Client : MonoBehaviour
     {
         ClientSend.Connect4movementSend(movement);
     }
-
+    #endregion
 
     public void SceneSend(string _scene)
     {
@@ -94,6 +103,7 @@ public class Client : MonoBehaviour
     public class TCP
     {
         public TcpClient socket;
+        public IPEndPoint endPoint;
 
         private NetworkStream stream;
         private Packet receivedData;
@@ -234,6 +244,8 @@ public class Client : MonoBehaviour
             endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
         }
 
+        /// <summary>Attempts to connect to the server via UDP.</summary>
+        /// <param name="_localPort">The port number to bind the UDP socket to.</param>
         public void Connect(int _localPort)
         {
             socket = new UdpClient(_localPort);
@@ -247,11 +259,13 @@ public class Client : MonoBehaviour
             }
         }
 
+        /// <summary>Sends data to the client via UDP.</summary>
+        /// <param name="_packet">The packet to send.</param>
         public void SendData(Packet _packet)
         {
             try
             {
-                _packet.InsertInt(instance.myId);
+                _packet.InsertInt(instance.myId); // Insert the client's ID at the start of the packet
                 if (socket != null)
                 {
                     socket.BeginSend(_packet.ToArray(), _packet.Length(), null, null);
@@ -263,6 +277,7 @@ public class Client : MonoBehaviour
             }
         }
 
+        /// <summary>Receives incoming UDP data.</summary>
         private void ReceiveCallback(IAsyncResult _result)
         {
             try
@@ -284,6 +299,8 @@ public class Client : MonoBehaviour
             }
         }
 
+        /// <summary>Prepares received data to be used by the appropriate packet handler methods.</summary>
+        /// <param name="_data">The recieved data.</param>
         private void HandleData(byte[] _data)
         {
             using (Packet _packet = new Packet(_data))
@@ -297,12 +314,13 @@ public class Client : MonoBehaviour
                 using (Packet _packet = new Packet(_data))
                 {
                     int _packetId = _packet.ReadInt();
-                    packetHandlers[_packetId](_packet);
+                    packetHandlers[_packetId](_packet); // Call appropriate method to handle the packet
                 }
             });
         }
 
-        public void Disconnect()
+        /// <summary>Disconnects from the server and cleans up the UDP connection.</summary>
+        private void Disconnect()
         {
             instance.Disconnect();
 
@@ -311,14 +329,16 @@ public class Client : MonoBehaviour
         }
     }
 
+
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
+            { (int)ServerPackets.udpTest, ClientHandle.UDPTest },
+            { (int)ServerPackets.noteToTablet, ClientHandle.noteReceived }
             //{ (int)ServerPackets.xylomovement, ClientHandle.xyloMovement },
             //{ (int)ServerPackets.robotmovement, ClientHandle.robotMovement },
-
 
         };
         Debug.Log("Initialized packets.");
@@ -333,6 +353,17 @@ public class Client : MonoBehaviour
             udp.socket.Close();
 
             Debug.Log("Disconnected from Server ...");
+        }
+    }
+
+    public void DisconnectTCP()
+    {
+        if (isConnected)
+        {
+            isConnected = false;
+            tcp.socket.Close();
+
+            Debug.Log("Disconnected TCP from Server ...");
         }
     }
 }

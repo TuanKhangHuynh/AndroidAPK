@@ -298,12 +298,14 @@
 -r:"Library/Bee/artifacts/1300b0aP.dag/Unity.VisualScripting.Flow.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aP.dag/UnityEngine.UI.ref.dll"
+"Assets/changeText.cs"
 "Assets/ClientServer/Client.cs"
 "Assets/ClientServer/ClientHandle.cs"
 "Assets/ClientServer/ClientSend.cs"
 "Assets/ClientServer/Packet.cs"
 "Assets/ClientServer/ThreadManager.cs"
 "Assets/ClientServer/UIManager.cs"
+"Assets/Scripts/InitiateConnection.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/EnvMapAnimator.cs"
 -langversion:9.0
 

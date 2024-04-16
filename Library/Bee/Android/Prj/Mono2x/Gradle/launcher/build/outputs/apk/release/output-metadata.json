@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.DefaultCompany.AndroidAPK",
+  "applicationId": "com.DefaultCompany.RoboControllerAR",
   "variantName": "release",
   "elements": [
     {

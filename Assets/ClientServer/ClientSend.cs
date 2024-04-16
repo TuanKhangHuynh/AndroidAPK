@@ -10,6 +10,12 @@ public class ClientSend : MonoBehaviour
         Client.instance.tcp.SendData(_packet);
     }
 
+    private static void SendUDPData(Packet _packet)
+    {
+        _packet.WriteLength();
+        Client.instance.udp.SendData(_packet);
+    }
+
     #region Packets
     public static void WelcomeReceived()
     {
@@ -22,6 +28,16 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    public static void UDPTestReceived()
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.udpTestReceived))
+        {
+            _packet.Write("Received a UDP packet.");
+
+            SendUDPData(_packet);
+        }
+    }
+
     public static void SceneSend(string _scene)
     {
         using (Packet _packet = new Packet((int)ClientPackets.sceneSend))
@@ -29,18 +45,18 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write(_scene);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
-    public static void SoundSend(string _scene)
+    public static void SoundSend(string _sound)
     {
         using (Packet _packet = new Packet((int)ClientPackets.soundSend))
         {
             _packet.Write(Client.instance.myId);
-            _packet.Write(_scene);
+            _packet.Write(_sound);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -52,7 +68,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write(_movement);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -63,7 +79,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write(_movement);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -74,7 +90,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write(_movement);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -85,7 +101,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write(_movement);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -98,7 +114,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write($"I received {_movement}");
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -109,7 +125,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(Client.instance.myId);
             _packet.Write($"I received {_movement}");
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -125,7 +141,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(_joint5);
             _packet.Write(_joint6);
             _packet.Write(grippervalue);
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
@@ -142,7 +158,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write($"Joint5 =  {_joint5}");
             _packet.Write($"Joint6 =  {_joint6}");
             _packet.Write($"Joint6 =  {grippervalue}");
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 

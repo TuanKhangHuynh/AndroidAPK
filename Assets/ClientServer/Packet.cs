@@ -8,22 +8,28 @@ using UnityEngine;
 public enum ServerPackets
 {
     welcome = 1,
+    udpTest,
     scene,
     sound,
+    note,
+    noteToTablet,
     xylomovement,
-    robotmovement,
+    legomovement,
     handovermovement,
     connect4movement,
+    robotmovement
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets
 {
-    welcomeReceived = 1,
+    welcomeReceived = 1, 
+    udpTestReceived,
     sceneSend,
     sceneReceived,
     soundSend,
     soundReceived,
+    noteSend,
     xylomovementSend,
     xylomovementReceived,
     legomovementSend,
